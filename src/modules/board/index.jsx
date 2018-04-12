@@ -4,7 +4,9 @@ import './board.css'
 
 class Board extends Component {
   static propTypes = {
-    startGame: PropTypes.func,
+    checkGameStatus: PropTypes.func,
+    rows: PropTypes.number,
+    cols: PropTypes.number,
   }
 
   constructor (props) {
@@ -15,8 +17,7 @@ class Board extends Component {
   }
 
   componentWillMount () {
-    let cols = 5
-    let rows = 5
+    const { rows, cols } = this.props
     let y = new Array(cols);
     for (var i = 0; i < cols; i++) {
       y[i] = new Array(rows).fill().map(() => Math.round(Math.random()))
@@ -26,23 +27,6 @@ class Board extends Component {
       board: y,
       endGame: false,
     })
-  }
-
-  checkGameStatus = () => {
-    let board = this.state.board
-    let node = this.state.board[0][0]
-    let status = true
-
-    for (let i = 0; i < board[0].length; i++ ) {
-      for (let j = 0; j < board.length; j++) {
-        if (board[i][j] !== node) {
-          status = false
-          break;
-        }
-      }
-    }
-
-    return status
   }
 
   swapValues = (board, row, col) =>{
@@ -74,13 +58,12 @@ class Board extends Component {
     if (col - 1 >= 0) {
       intermBoard = this.swapValues(intermBoard, row, col - 1)
     }
-
-    let status = this.checkGameStatus()
     
     this.setState({
       board: intermBoard,
-      endGame: status,
     })
+
+    this.props.checkGameStatus(intermBoard)
   }
 
   render() {

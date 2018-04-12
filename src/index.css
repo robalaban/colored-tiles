@@ -3,3 +3,20 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+
+.settings {
+  margin: 0 auto;
+  width: 500px;
+  text-align: center;
+}
+
+.settings input {
+  margin: 1.2rem auto;
+  display: block;
+}
+
+.container {
+  text-align: center;
+  margin: 1.2rem;
+}
