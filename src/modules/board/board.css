@@ -1,0 +1,24 @@
+.board {
+  width: 65%;
+  margin: 0 auto;
+}
+
+.board--column {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+.board--row {
+  border: 1px solid grey;
+  padding: 25px;
+  flex: 1 0 auto;
+}
+
+.board--row__black {
+  background: black;
+}
+
+.board--row__red {
+  background: tomato;
+}
